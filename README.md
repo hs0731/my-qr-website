@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>나만의 웹사이트</title>
+    <title>인터랙티브 지도</title>
     <style>
-        #map {
+        .map-container {
             position: relative;
-            width: 50%;
-            height: auto;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
         }
         .popup {
             position: absolute;
@@ -17,32 +18,34 @@
             padding: 10px;
             display: none;
         }
+        .info {
+            margin-top: 20px;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
-    <h1>안녕하세요! 나만의 웹사이트에 오신 것을 환영합니다.</h1>
-    <div id="map-container">
-        <img id="map" src="map_1.png" alt="Mall Map">
-        <div id="popup" class="popup">이 위치로 AGV 호출</div>
+    <h1>인터랙티브 지도</h1>
+    <div class="map-container">
+        <svg id="map" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+            <!-- SVG 내용 -->
+            <rect x="100" y="100" width="200" height="100" fill="lightblue" id="C402"/>
+            <text x="150" y="150" font-size="20">C402</text>
+            <!-- 다른 구역들도 추가 -->
+        </svg>
     </div>
-    <p>이곳에서 저의 프로젝트와 블로그를 확인할 수 있습니다.</p>
+    <div id="info" class="info">여기에 장소 설명이 나타납니다.</div>
 
     <script>
         const map = document.getElementById('map');
-        const popup = document.getElementById('popup');
+        const info = document.getElementById('info');
 
         map.addEventListener('click', function(event) {
-            const rect = map.getBoundingClientRect();
-            const x = event.clientX - rect.left;
-            const y = event.clientY - rect.top;
-
-            popup.style.left = `${x}px`;
-            popup.style.top = `${y}px`;
-            popup.style.display = 'block';
-        });
-
-        map.addEventListener('mouseleave', function() {
-            popup.style.display = 'none';
+            const target = event.target;
+            if (target.tagName === 'rect') {
+                const id = target.id;
+                info.textContent = `${id}에 대한 설명입니다.`;
+            }
         });
     </script>
 </body>
