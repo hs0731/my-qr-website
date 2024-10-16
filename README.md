@@ -11,13 +11,6 @@
             max-width: 800px;
             margin: auto;
         }
-        .popup {
-            position: absolute;
-            background-color: white;
-            border: 1px solid black;
-            padding: 10px;
-            display: none;
-        }
         .info {
             margin-top: 20px;
             font-size: 18px;
