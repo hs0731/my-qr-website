@@ -9,21 +9,24 @@
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             text-align: center;
+            padding: 20px;
         }
         .map-container {
             position: relative;
             width: 100%;
             max-width: 800px;
             margin: auto;
-            background-color: #fff; /* 지도 배경색 */
-            border: 1px solid #ccc; /* 테두리 추가 */
         }
         .info {
             margin-top: 20px;
             font-size: 18px;
-            padding: 10px;
-            background-color: #e7f3fe; /* 배경색 */
-            border: 1px solid #bcdff1; /* 테두리 색상 */
+        }
+        rect {
+            cursor: pointer;
+            transition: fill 0.3s;
+        }
+        rect:hover {
+            fill: orange; /* 마우스를 올렸을 때 색상 변경 */
         }
     </style>
 </head>
@@ -31,10 +34,9 @@
     <h1>인터랙티브 지도</h1>
     <div class="map-container">
         <svg id="map" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
-            <!-- SVG 내용 -->
-            <rect x="100" y="100" width="200" height="100" fill="lightblue" id="C402" aria-label="C402"/>
+            <rect x="100" y="100" width="200" height="100" fill="lightblue" id="C402"/>
             <text x="150" y="150" font-size="20">C402</text>
-            <rect x="400" y="100" width="200" height="100" fill="lightgreen" id="C403" aria-label="C403"/>
+            <rect x="400" y="100" width="200" height="100" fill="lightgreen" id="C403"/>
             <text x="450" y="150" font-size="20">C403</text>
             <!-- 다른 구역들도 추가 -->
         </svg>
@@ -45,6 +47,7 @@
         const map = document.getElementById('map');
         const info = document.getElementById('info');
 
+        // 각 구역에 클릭 이벤트 추가
         map.addEventListener('click', function(event) {
             const target = event.target;
             if (target.tagName === 'rect') {
