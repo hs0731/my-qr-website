@@ -2,21 +2,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <title>나만의 웹사이트</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-            padding: 50px;
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #555;
-        }
-    </style>
+    
 </head>
 <body>
     <h1>안녕하세요! 나만의 웹사이트에 오신 것을 환영합니다.</h1>
